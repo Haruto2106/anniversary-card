@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<title>Happy Anniversary 1 month💖</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background: radial-gradient(circle at top, #ffd1dc, #ff9aa2);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Segoe UI', sans-serif;
+}
+
+/* กล่องหลัก */
+.scene{
+  position:relative;
+  width:520px;
+  height:520px;
+}
+
+/* 🔹 กระดาษ (อยู่บนสุดเสมอ) */
+.letter{
+  position:absolute;
+  left:60px;
+  bottom:80px;
+  width:400px;
+  height:360px;
+  height: auto;
+  background:#fffafc;
+  border-radius:18px;
+  padding:32px;
+  box-sizing:border-box;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,.2);
+  z-index:10;
+  transform:translateY(180px) scale(.95);
+  opacity:0;
+  transition:all 1.2s ease;
+}
+
+.letter h2{
+  margin:0 0 18px;
+  font-size:28px;
+  color:#ff4d6d;
+}
+
+.letter p{
+  font-size:16px;
+  line-height:1.9;
+  color:#444;
+}
+
+/* 🔹 ซองจดหมาย */
+.envelope{
+  position:absolute;
+  left:30px;
+  bottom:40px;
+  width:460px;
+  height:280px;
+  cursor:pointer;
+  z-index:2;
+}
+
+/* ตัวซอง */
+.envelope-base{
+  position:absolute;
+  inset:0;
+  background:#ff6f91;
+  clip-path:polygon(0 100%,0 0,50% 55%,100% 0,100% 100%);
+  border-radius:10px;
+}
+
+/* ฝาซอง (อยู่หลังจดหมาย) */
+.flap{
+  position:absolute;
+  inset:0;
+  background:#ff4d6d;
+  clip-path:polygon(0 0,50% 55%,100% 0);
+  transform-origin:top;
+  transition:transform 1s ease;
+  z-index:1;
+}
+
+/* เปิดแล้ว */
+.scene.open .flap{
+  transform:rotateX(180deg);
+}
+
+.scene.open .letter{
+  transform:translateY(0) scale(1.05);
+  opacity:1;
+}
+
+/* ข้อความแนะนำ */
+.hint{
+  position:absolute;
+  bottom:-10px;
+  width:100%;
+  text-align:center;
+  color:white;
+  font-size:15px;
+  opacity:.95;
+}
+
+/* หัวใจ */
+.heart{
+  position:absolute;
+  color:#ff4d6d;
+  font-size:26px;
+  animation:float 3s ease forwards;
+  pointer-events:none;
+}
+
+@keyframes float{
+  from{opacity:1; transform:translateY(0) scale(1);}
+  to{opacity:0; transform:translateY(-200px) scale(1.6);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="scene" onclick="openCard()">
+
+  <!-- กระดาษ -->
+  <div class="letter">
+    <h2>Happy Anniversary 1 month💕</h2>
+    <p>
+      ขอบคุณนะที่เข้ามาเป็นความสุขให้เค้า
+      ตอนนี้ก็ครบรอบ 1 เดือนแล้ว
+      เค้าอยากให้เธออยู่กับเค้าไปนานๆนะ
+      อะไรที่ไม่โอเคให้เธอบอกเค้าได้เลยเค้าจะได้ปรับ
+    </p>
+    <p>
+      และอันนี้ก็คือสิทธิพิเศษสำหรับหมูอ้วงของเค้า
+      เป็นของขวัญครบรอบ 1 เดือน สิทธิพิเศษอันนี้ก็คืออออ
+      บัตรหมาเชื่อง 1 วัน 
+      ชื่ออาจจะแปลกแต่ถ้าเธอจะใช้เธอก็มาบอกเค้าแล้ววันนั้นเค้าจะไม่ขัดอะไรเธอเลย
+      เค้าจะทำตามที่เธอบอกทุกอย่างเค้าจะเชื่องเป็นหมาเลย😊😊🦊
+    </p>
+    <p>💕เค้ารักเธอมากๆนะอยู่กับเค้าไปนานๆนะ💕</p>
+  </div>
+
+  <!-- ซอง -->
+  <div class="envelope">
+    <div class="envelope-base"></div>
+    <div class="flap"></div>
+  </div>
+
+  <div class="hint">เธอลองเปิดดู😊</div>
+</div>
+
+<script>
+function openCard(){
+  const scene = document.querySelector('.scene');
+  scene.classList.toggle('open');
+
+  for(let i=0;i<10;i++){
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = '❤';
+    heart.style.left = Math.random()*500 + 'px';
+    heart.style.bottom = '120px';
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),3000);
+  }
+}
+</script>
+
+</body>
+</html>
